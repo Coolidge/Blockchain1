@@ -362,7 +362,7 @@
           <option name="items">
             <list>
               <FrameworkLesson>
-                <option name="currentTaskIndex" value="0" />
+                <option name="currentTaskIndex" value="1" />
                 <option name="customPresentableName" />
                 <option name="id" value="0" />
                 <option name="index" value="1" />
@@ -384,8 +384,8 @@
                       <option name="id" value="5413" />
                       <option name="index" value="1" />
                       <option name="name" value="Blockchain essentials" />
-                      <option name="record" value="-1" />
-                      <option name="status" value="Unchecked" />
+                      <option name="record" value="1" />
+                      <option name="status" value="Solved" />
                       <option name="files">
                         <map>
                           <entry key="src/blockchain/Main.java">
@@ -499,9 +499,51 @@
                                 <option name="answerPlaceholders">
                                   <list />
                                 </option>
-                                <option name="highlightErrors" value="false" />
+                                <option name="highlightErrors" value="true" />
                                 <option name="name" value="src/blockchain/Main.java" />
                                 <option name="text" value="package blockchain;&#10;&#10;public class Main {&#10;    public static void main(String[] args) {&#10;        System.out.println(&quot;Hello World!&quot;);&#10;    }&#10;}&#10;" />
+                                <option name="trackChanges" value="true" />
+                                <option name="visible" value="true" />
+                              </TaskFile>
+                            </value>
+                          </entry>
+                          <entry key="src/blockchain/StringUtils.java">
+                            <value>
+                              <TaskFile>
+                                <option name="answerPlaceholders">
+                                  <list />
+                                </option>
+                                <option name="highlightErrors" value="false" />
+                                <option name="name" value="src/blockchain/StringUtils.java" />
+                                <option name="text" value="package blockchain;&#10;&#10;import java.security.MessageDigest;&#10;&#10;class StringUtil {&#10;    /* Applies Sha256 to a string and returns a hash. */&#10;    public static String applySha256(String input){&#10;        try {&#10;            MessageDigest digest = MessageDigest.getInstance(&quot;SHA-256&quot;);&#10;            /* Applies sha256 to our input */&#10;            byte[] hash = digest.digest(input.getBytes(&quot;UTF-8&quot;));&#10;            StringBuilder hexString = new StringBuilder();&#10;            for (byte elem: hash) {&#10;                String hex = Integer.toHexString(0xff &amp; elem);&#10;                if(hex.length() == 1) hexString.append('0');&#10;                hexString.append(hex);&#10;            }&#10;            return hexString.toString();&#10;        }&#10;        catch(Exception e) {&#10;            throw new RuntimeException(e);&#10;        }&#10;    }&#10;}" />
+                                <option name="trackChanges" value="true" />
+                                <option name="visible" value="true" />
+                              </TaskFile>
+                            </value>
+                          </entry>
+                          <entry key="src/blockchain/BlockChain.java">
+                            <value>
+                              <TaskFile>
+                                <option name="answerPlaceholders">
+                                  <list />
+                                </option>
+                                <option name="highlightErrors" value="true" />
+                                <option name="name" value="src/blockchain/BlockChain.java" />
+                                <option name="text" value="package blockchain;&#10;&#10;import java.util.ArrayList;&#10;import java.util.List;&#10;&#10;public class BlockChain {&#10;     private List&lt;Block&gt; chain;&#10;&#10;     public BlockChain() {&#10;         chain = new ArrayList&lt;Block&gt;();&#10;     }&#10;&#10;     public void addBlock() {&#10;         Block block = new Block();&#10;         int lastIndex = chain.size();&#10;         String preBlock = null;&#10;         if(lastIndex == 0) {&#10;             preBlock = &quot;0&quot;;&#10;         } else {&#10;             preBlock = chain.get(chain.size()-1).getCurrentHash();&#10;         }&#10;         block.setPreBlock(preBlock);&#10;         block.setCurrentHash();&#10;     }&#10;&#10;     public boolean validateBlocks() {&#10;&#10;        String preBlock = &quot;0&quot;;&#10;         for (Block block: chain) {&#10;            if(!preBlock.equals(block.getPreBlock())) {&#10;                return false;&#10;            }&#10;            preBlock = block.getCurrentHash();&#10;         }&#10;&#10;         return true;&#10;     }&#10;&#10;     public String toString() {&#10;         StringBuffer str = new StringBuffer();&#10;&#10;         for (Block block: chain) {&#10;             str.append(&quot;\nBlock:\n&quot;);&#10;             str.append(block.toString());&#10;         }&#10;&#10;         return str.toString();&#10;     }&#10;}&#10;" />
+                                <option name="trackChanges" value="true" />
+                                <option name="visible" value="true" />
+                              </TaskFile>
+                            </value>
+                          </entry>
+                          <entry key="src/blockchain/Block.java">
+                            <value>
+                              <TaskFile>
+                                <option name="answerPlaceholders">
+                                  <list />
+                                </option>
+                                <option name="highlightErrors" value="false" />
+                                <option name="name" value="src/blockchain/Block.java" />
+                                <option name="text" value="package blockchain;&#10;&#10;import java.util.Date;&#10;&#10;public class Block {&#10;    static Integer lastIndex = 0;&#10;    int id;&#10;    long timestamp;&#10;    String preBlock;&#10;    String currentHash;&#10;&#10;    public Block() {&#10;        this.id = ++lastIndex;&#10;        this.timestamp = new Date().getTime();&#10;    }&#10;&#10;    public void setPreBlock(String preBlock) {&#10;        this.preBlock = preBlock;&#10;    }&#10;    public String getPreBlock() {&#10;        return this.preBlock;&#10;    }&#10;&#10;    public String getCurrentHash() {&#10;        return currentHash;&#10;    }&#10;&#10;    public void setCurrentHash() {&#10;        this.currentHash = StringUtil.applySha256(this.toString());&#10;    }&#10;&#10;    public String toString() {&#10;        StringBuffer str = new StringBuffer();&#10;        str.append(&quot;\nId: &quot;).append(this.id);&#10;        str.append(&quot;\nTimestamp: &quot;).append(this.timestamp);&#10;        str.append(&quot;\nHash of the previous block: \n&quot;).append(this.preBlock);&#10;        str.append(&quot;\nHash of the block: &quot;).append(this.currentHash).append(&quot;\n&quot;);&#10;&#10;        return str.toString();&#10;    }&#10;&#10;}&#10;" />
                                 <option name="trackChanges" value="true" />
                                 <option name="visible" value="true" />
                               </TaskFile>

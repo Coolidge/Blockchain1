@@ -21,6 +21,8 @@ public class BlockChain {
          }
          block.setPreBlock(preBlock);
          block.setCurrentHash();
+
+         chain.add(block);
      }
 
      public boolean validateBlocks() {
@@ -40,7 +42,7 @@ public class BlockChain {
          StringBuffer str = new StringBuffer();
 
          for (Block block: chain) {
-             str.append("\nBlock:\n");
+             str.append("\nBlock:");
              str.append(block.toString());
          }
 
