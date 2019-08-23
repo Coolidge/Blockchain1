@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Blockchain/task/Blockchain-task.iml" filepath="$PROJECT_DIR$/.idea/modules/Blockchain/task/Blockchain-task.iml" group="Blockchain1/Blockchain-task" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Blockchain/task/Blockchain-task_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Blockchain/task/Blockchain-task_main.iml" group="Blockchain1/Blockchain-task" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Blockchain/task/Blockchain-task_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Blockchain/task/Blockchain-task_test.iml" group="Blockchain1/Blockchain-task" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Blockchain1.iml" filepath="$PROJECT_DIR$/.idea/Blockchain1.iml" group="Blockchain1" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/util.iml" filepath="$PROJECT_DIR$/.idea/modules/util/util.iml" group="Blockchain1/util" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/util_main.iml" filepath="$PROJECT_DIR$/.idea/modules/util/util_main.iml" group="Blockchain1/util" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/util_test.iml" filepath="$PROJECT_DIR$/.idea/modules/util/util_test.iml" group="Blockchain1/util" />
+    </modules>
+  </component>
+</project>
