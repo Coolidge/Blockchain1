@@ -1,28 +1,63 @@
 package blockchain;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BlockChain {
      private List<Block> chain;
+     int riddleComplicity;
 
-     public BlockChain() {
-         chain = new ArrayList<Block>();
+     private static final String FILE_NAME = "./chain.obj";
+
+     public BlockChain(int riddleComplicity) throws Exception {
+
+        File file = new File(FILE_NAME);
+
+        if(!file.exists()) {
+            file.createNewFile();
+            this.chain = new ArrayList<Block>();
+        } else {
+            FileInputStream fileIn = new FileInputStream(file);
+            ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+            this.chain = (List<Block>) objectIn.readObject();
+            objectIn.close();
+            fileIn.close();
+
+            if(!validateBlocks()) {
+                throw new Exception();
+            }
+        }
+
+         this.riddleComplicity = riddleComplicity;
      }
 
-     public void addBlock() {
-         Block block = new Block();
+     public void addBlock() throws Exception {
+
          int lastIndex = chain.size();
-         String preBlock = null;
+         String preBlockHash = null;
+         Block preBlock = null;
+         int id = 1;
          if(lastIndex == 0) {
-             preBlock = "0";
+             preBlockHash = "0";
          } else {
-             preBlock = chain.get(chain.size()-1).getCurrentHash();
+             preBlock = chain.get(chain.size()-1);
+             preBlockHash = preBlock.getCurrentHash();
+             id = preBlock.getId()+1;
          }
-         block.setPreBlock(preBlock);
-         block.setCurrentHash();
+         Block block = new Block(id, preBlockHash, this.riddleComplicity);
 
          chain.add(block);
+
+         persist();
+     }
+
+     private void persist() throws IOException {
+         FileOutputStream fileOut = new FileOutputStream(FILE_NAME);
+         ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+         objectOut.writeObject(this.chain);
+         objectOut.close();
+         fileOut.close();
      }
 
      public boolean validateBlocks() {

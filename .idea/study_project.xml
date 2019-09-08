@@ -476,7 +476,7 @@
                       <option name="index" value="2" />
                       <option name="name" value="A proof of work concept" />
                       <option name="record" value="-1" />
-                      <option name="status" value="Unchecked" />
+                      <option name="status" value="Solved" />
                       <option name="files">
                         <map>
                           <entry key="test/BlockchainTest.java">
@@ -541,9 +541,23 @@
                                 <option name="answerPlaceholders">
                                   <list />
                                 </option>
-                                <option name="highlightErrors" value="false" />
+                                <option name="highlightErrors" value="true" />
                                 <option name="name" value="src/blockchain/Block.java" />
                                 <option name="text" value="package blockchain;&#10;&#10;import java.util.Date;&#10;&#10;public class Block {&#10;    static Integer lastIndex = 0;&#10;    int id;&#10;    long timestamp;&#10;    String preBlock;&#10;    String currentHash;&#10;&#10;    public Block() {&#10;        this.id = ++lastIndex;&#10;        this.timestamp = new Date().getTime();&#10;    }&#10;&#10;    public void setPreBlock(String preBlock) {&#10;        this.preBlock = preBlock;&#10;    }&#10;    public String getPreBlock() {&#10;        return this.preBlock;&#10;    }&#10;&#10;    public String getCurrentHash() {&#10;        return currentHash;&#10;    }&#10;&#10;    public void setCurrentHash() {&#10;        this.currentHash = StringUtil.applySha256(this.toString());&#10;    }&#10;&#10;    public String toString() {&#10;        StringBuffer str = new StringBuffer();&#10;        str.append(&quot;\nId: &quot;).append(this.id);&#10;        str.append(&quot;\nTimestamp: &quot;).append(this.timestamp);&#10;        str.append(&quot;\nHash of the previous block: \n&quot;).append(this.preBlock);&#10;        str.append(&quot;\nHash of the block: &quot;).append(this.currentHash).append(&quot;\n&quot;);&#10;&#10;        return str.toString();&#10;    }&#10;&#10;}&#10;" />
+                                <option name="trackChanges" value="true" />
+                                <option name="visible" value="true" />
+                              </TaskFile>
+                            </value>
+                          </entry>
+                          <entry key="chain.obj">
+                            <value>
+                              <TaskFile>
+                                <option name="answerPlaceholders">
+                                  <list />
+                                </option>
+                                <option name="highlightErrors" value="false" />
+                                <option name="name" value="chain.obj" />
+                                <option name="text" value="" />
                                 <option name="trackChanges" value="true" />
                                 <option name="visible" value="true" />
                               </TaskFile>
